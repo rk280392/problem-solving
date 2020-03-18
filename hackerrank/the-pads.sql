@@ -19,3 +19,11 @@ SELECT * FROM (
  -- From Occupations
  -- GROUP BY Occupation
  -- Order BY Count() ASC;
+
+select * from 
+( SELECT CONCAT(NAME,'(', SUBSTRING(OCCUPATION, 1, 1), ')') c 
+FROM OCCUPATIONS) t 
+union select * from 
+( select CONCAT('There are a total of ', COUNT(OCCUPATION), ' ', CONCAT(LOWER(OCCUPATION), 's.')) 
+from OCCUPATIONS GROUP BY OCCUPATION ) t2 
+order by c asc;
